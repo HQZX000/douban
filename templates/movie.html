@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>豆瓣Top250数据分析</title>
+  <meta content="" name="descriptison">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="static/assets/img/favicon.png" rel="icon"> <!-- 网站图标 -->
+  <link href="static/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i,900" rel="stylesheet"> <!-- 引入Google Fonts字体 -->
+
+  <!-- Vendor CSS Files -->
+  <link href="static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> <!-- 引入Bootstrap CSS样式 -->
+  <link href="static/assets/vendor/icofont/icofont.min.css" rel="stylesheet"> <!-- 引入Icofont图标库样式 -->
+  <link href="static/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/venobox/venobox.css" rel="stylesheet">
+  <link href="static/assets/vendor/aos/aos.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="static/assets/css/style.css" rel="stylesheet"> <!-- 引入自定义样式表 -->
+
+</head>
+
+<body>
+  <!-- ======= Header ======= -->
+  <header id="header">
+    <div class="container">
+
+      <div class="logo float-left">
+        <h1 class="text-light"><a href="layout.html"><span>jiaminhe</span></a></h1> <!-- 网站标题 -->
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="layout.html"><img src="static/assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      </div>
+
+      <nav class="nav-menu float-right d-none d-lg-block">
+         <ul>
+          <li class="active"><a href="/home">首页<i class="la la-angle-down"></i></a></li> <!-- 导航菜单 -->
+          <li><a href="/movie">电影</a></li>
+          <li><a href="/rate">评分</a></li>
+          <li><a href="/word">词云图</a></li>
+          <li><a href="/team">团队</a></li>
+        </ul>
+      </nav><!-- .nav-menu -->
+
+    </div>
+  </header><!-- End Header -->
+
+    <!-- ======= Our Team Section ======= -->
+    <section id="team" class="team">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>豆瓣电影top250</h2> <!-- 分析结果标题 -->
+        </div>
+    <!-- ======= Counts Section ======= -->
+    <section class="counts section-bg">
+      <div class="container">
+          <table class="table table-striped"> <!-- 数据表格 -->
+              <tr>
+                  <td>排名</td>
+                  <td>电影名称</td>
+                  <td>评分</td>
+                  <td>评价人数</td>
+                  <td>简介</td>
+                  <td>概况</td>
+              </tr>
+              {% for movie in movies %} <!-- 使用模板引擎，循环遍历电影数据 -->
+                  <tr>
+                      <td>{{ movie[0] }}</td>
+                      <td>
+                        <a href="{{ movie[2] }}" target="_blank">
+                          {{ movie[1] }}
+                        </a>
+                      </td>
+                      <td>{{ movie[4] }}</td>
+                      <td>{{ movie[5] }}</td>
+                      <td>{{ movie[6] }}</td>
+                      <td>{{ movie[7] }}</td>
+                  </tr>
+              {% endfor %}
+          </table>
+
+      </div>
+    </section><!-- End Counts Section -->
+      </div>
+    </section><!-- End Our Team Section -->
+<footer id="footer">
+    <div class="footer-top">
+        <div class="container">
+            <div class="copyright">
+                @ Copyright<strong><span>jiaminhe</span></strong>
+        </div>
+        </div>
+    </div>
+</footer>
+  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+  <!-- Vendor JS Files -->
+  <script src="static/assets/vendor/jquery/jquery.min.js"></script> <!-- 引入jQuery库 -->
+  <script src="static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script> <!-- 引入Bootstrap JS插件 -->
+  <script src="static/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="static/assets/vendor/php-email-form/validate.js"></script>
+  <script src="static/assets/vendor/jquery-sticky/jquery.sticky.js"></script>
+  <script src="static/assets/vendor/venobox/venobox.min.js"></script>
+  <script src="static/assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+  <script src="static/assets/vendor/counterup/counterup.min.js"></script>
+  <script src="static/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="static/assets/vendor/aos/aos.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="static/assets/js/main.js"></script> <!-- 引入自定义的JavaScript脚本 -->
+
+</body>
+
+</html>

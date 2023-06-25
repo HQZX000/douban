@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+   <script src="/static/assets/js/echarts.min.js"></script>
+  <title>豆瓣Top250评分数据展示</title>
+  <meta content="" name="descriptison">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="static/assets/img/favicon.png" rel="icon">
+  <link href="static/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i,900" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/venobox/venobox.css" rel="stylesheet">
+  <link href="static/assets/vendor/aos/aos.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="static/assets/css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+  <!-- ======= Header ======= -->
+  <header id="header">
+    <div class="container">
+
+      <div class="logo float-left">
+        <h1 class="text-light"><a href="layout.html"><span>jiaminhe</span></a></h1>
+      </div>
+
+      <nav class="nav-menu float-right d-none d-lg-block">
+        <ul>
+          <li class="active"><a href="/home">首页<i class="la la-angle-down"></i></a></li>
+          <li><a href="/movie">电影</a></li>
+          <li><a href="/rate">评分</a></li>
+          <li><a href="/word">词云图</a></li>
+          <li><a href="/team">团队</a></li>
+        </ul>
+      </nav><!-- .nav-menu -->
+
+    </div>
+  </header><!-- End Header -->
+
+    <!-- ======= Our Team Section ======= -->
+    <section id="team" class="team">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>豆瓣电影top250评分展示</h2>
+        </div>
+    <!-- ======= Counts Section ======= -->
+    <section class="counts section-bg">
+      <div class="container" >
+          <div id="main" style="width: 100%;height:400px;"></div>
+      </div>
+    </section><!-- End Counts Section -->
+      </div>
+    </section><!-- End Our Team Section -->
+<footer id="footer">
+    <div class="footer-top">
+        <div class="container">
+            <div class="copyright">
+                @ Copyright<strong><span>&nbsp&nbspjiaminhe</span></strong>
+        </div>
+        </div>
+    </div>
+</footer>
+
+  <!-- Vendor JS Files -->
+  <script src="static/assets/vendor/jquery/jquery.min.js"></script>
+  <script src="static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="static/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="static/assets/vendor/php-email-form/validate.js"></script>
+  <script src="static/assets/vendor/jquery-sticky/jquery.sticky.js"></script>
+  <script src="static/assets/vendor/venobox/venobox.min.js"></script>
+  <script src="static/assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+  <script src="static/assets/vendor/counterup/counterup.min.js"></script>
+  <script src="static/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="static/assets/vendor/aos/aos.js"></script>
+ <script type="text/javascript">
+ // 基于准备好的 dom，初始化 echarts 实例
+var myChart = echarts.init(document.getElementById('main'));
+
+// 指定图表的配置项和数据
+var option = {
+  color: ['#000000'], // 柱状图的颜色
+  tooltip: {
+    trigger: 'axis', // 提示框触发方式为坐标轴触发
+    axisPointer: {
+      type: 'line' // 坐标轴指示器类型为直线
+    }
+  },
+
+  grid: {
+    top: '2%', // 图表距离容器顶部的距离
+    left: '3%', // 图表距离容器左侧的距离
+    right: '4%', // 图表距离容器右侧的距离
+    bottom: '3%', // 图表距离容器底部的距离
+    containLabel: true // 包含坐标轴刻度标签在内
+  },
+  xAxis: [
+    {
+      type: 'category', // x轴类型为类目型，适用于离散的数据
+      data: {{ score }}, // x轴数据，这里使用了模板引擎语法，将score变量插入到模板中
+      axisTick: {
+        alignWithLabel: true // 坐标轴刻度与标签对齐
+      },
+      name: '评分' // x轴标签
+    }
+  ],
+
+  yAxis: [
+    {
+      type: 'value',
+      axisLabel: {
+        formatter: '{value}' // 不显示原始刻度上的标签
+      }
+    }
+  ],
+  graphic: [
+    {
+      type: 'text',
+      left: 'left', // 文本标签位于图表左侧
+      top:  '2%', // 文本标签距离容器顶部的距离
+      style: {
+        text: '数目', // 文本内容为'数目'
+        textAlign: 'left', // 文本水平对齐方式为左对齐
+        fill: '#000000', // 文本颜色为黑色
+        fontSize: 14 // 文本字体大小
+      }
+    }
+  ],
+
+  series: [
+    {
+      type: 'bar', // 图表类型为柱状图
+      barWidth: '60%', // 柱状图的宽度
+      data: {{num}} // 图表数据，这里使用了模板引擎语法，将num变量插入到模板中
+    }
+  ]
+};
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+
+    </script>
+  <!-- Template Main JS File -->
+  <script src="static/assets/js/main.js"></script>
+
+</body>
+
+</html>
